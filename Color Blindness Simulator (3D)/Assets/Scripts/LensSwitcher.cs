@@ -2,28 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LensSwitcher : MonoBehaviour
 {
     public Button complete;
     public Button reset;
-    public Button deutronomaly;
+    public Selectable RG;
+    public Selectable BY;
 
-
-    // Start is called before the first frame update
     void Start()
     {
+        var RGdropdown = transform.GetComponent<TMP_Dropdown>();
+        var BYdropdown = transform.GetComponent<TMP_Dropdown>();
 
+        RGdropdown.options.Clear();
+        BYdropdown.options.Clear();
+
+        List<string> RGitems = new List<string>();
+        List<string> BYitems = new List<string>();
+
+        RGitems.Add("Deuteranomaly");
+        RGitems.Add("Protanomaly");
+        RGitems.Add("Deuteranopia");
+        RGitems.Add("Protanopia");
+
+        BYitems.Add("Tritanomaly");
+        BYitems.Add("Tritanopia");
+
+        foreach (var item in RGitems)
+        {
+            RGdropdown.options.Add(new TMP_Dropdown.OptionData() { text = item });
+        }
+
+        DropdownItemSelected(RGdropdown);
+        RGdropdown.onValueChanged.AddListener(delegate { DropdownItemSelected(RGdropdown); });
+
+        foreach (var item in BYitems)
+        {
+            BYdropdown.options.Add(new TMP_Dropdown.OptionData() { text = item });
+        }
+
+        DropdownItemSelected(BYdropdown);
+        BYdropdown.onValueChanged.AddListener(delegate { DropdownItemSelected(BYdropdown); });
     }
 
-    // Update is called once per frame
-    void Update()
+    void DropdownItemSelected(TMP_Dropdown dropdown)
     {
 
+        int index = dropdown.value;
+        Text.text = dropdown.options[index].text;
     }
+    public void On_Complete_Button_Click()
+    {
+        Complete();
 
+    }
     public void On_Reset_Button_Click()
     {
-
+        Reset();
     }
 }
