@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 public class StartMenu : MonoBehaviour
 {
-    // sets default to having the menu open
-    public bool GameIsPaused = false;
     public Button StartButton;
-    public GameObject GameStartUI;
+    public GameObject gameStartUI;
+    public GameObject gameUI;
 
 
 
@@ -18,16 +18,14 @@ public class StartMenu : MonoBehaviour
 
     void StartGame()
     {
-        GameStartUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+        gameStartUI.SetActive(false);
+        gameUI.SetActive(true);
     }
 
     void Intro()
     {
-        GameStartUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
+        gameStartUI.SetActive(true);
+        gameUI.SetActive(false);
     }
 
     public void On_Start_Button_Click()

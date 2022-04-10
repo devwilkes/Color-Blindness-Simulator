@@ -5,55 +5,52 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class FilterSwitcher : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    private ColorGrading colorGrading;
+    public PostProcessVolume danomaly;
+    public PostProcessVolume panomaly;
+    public PostProcessVolume danopia;
+    public PostProcessVolume panopia;
+    public PostProcessVolume tanomaly;
+    public PostProcessVolume tanopia;
+    public PostProcessVolume complete;
 
     void Deuteranomaly()
     {
-
+        colorGrading.active = true;
     }
 
     void Protanomaly()
     {
-
+        colorGrading.active = true;
     }
 
     void Deuteranopia()
     {
-
+        colorGrading.active = true;
     }
 
     void Protanopia()
     {
-
+        colorGrading.active = true;
     }
 
     void Tritanomaly()
     {
-
+        colorGrading.active = true;
     }
 
     void Tritanopia()
     {
-
+        colorGrading.active = true;
     }
 
-    void Complete()
+    public void Complete()
     {
-
+        colorGrading.active = true;
     }
 
-    void Reset()
+    public void Reset()
     {
-
+        colorGrading.active = false;
     }
 }

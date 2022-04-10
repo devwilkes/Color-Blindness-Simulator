@@ -10,6 +10,8 @@ public class LensSwitcher : MonoBehaviour
     public Button reset;
     public Selectable RG;
     public Selectable BY;
+    public TMP_Text Textbox;
+    public FilterSwitcher swap;
 
     void Start()
     {
@@ -49,17 +51,17 @@ public class LensSwitcher : MonoBehaviour
 
     void DropdownItemSelected(TMP_Dropdown dropdown)
     {
-
         int index = dropdown.value;
-        Text.text = dropdown.options[index].text;
+        Textbox.text = dropdown.options[index].text;
+        
     }
     public void On_Complete_Button_Click()
     {
-        Complete();
+        swap.Complete();
 
     }
     public void On_Reset_Button_Click()
     {
-        Reset();
+        swap.Reset();
     }
 }
